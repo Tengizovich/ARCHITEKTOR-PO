@@ -1,0 +1,47 @@
+class Item {
+  open() {
+    throw new Error('Method not implemented');
+  }
+}
+
+class GoldItem extends Item {
+  open() {
+    console.log('Gold');
+  }
+}
+
+class GemItem extends Item {
+  open() {
+    console.log('Gem');
+  }
+}
+
+class ItemFactory {
+  createItem() {
+    throw new Error('Method not implemented');
+  }
+}
+
+class GoldItemFactory extends ItemFactory {
+  createItem() {
+    console.log('Create new bag');
+    return new GoldItem();
+  }
+}
+
+class GemItemFactory extends ItemFactory {
+  createItem() {
+    console.log('Create new bag');
+    return new GemItem();
+  }
+}
+
+// Добавить новые предметы. Сундуки с новыми предметами.
+
+const factories = [new GoldItemFactory(), new GemItemFactory()];
+
+for (let i = 0; i < 20; i++) {
+  const factory = factories[Math.floor(Math.random() * factories.length)];
+  const item = factory.createItem();
+  item.open();
+}
