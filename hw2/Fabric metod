@@ -1,0 +1,41 @@
+// Конкретный класс CreatorA
+class CreatorA extends Creator {
+  factoryMethod() {
+    return new ProductA();
+  }
+}
+
+// Конкретный класс CreatorB
+class CreatorB extends Creator {
+  factoryMethod() {
+    return new ProductB();
+  }
+}
+
+// Абстрактный класс Product
+class Product {
+  operation() {
+    throw new Error('operation() должен быть переопределен');
+  }
+}
+
+// Конкретный класс ProductA
+class ProductA extends Product {
+  operation() {
+    return 'Результат работы ProductA';
+  }
+}
+
+// Конкретный класс ProductB
+class ProductB extends Product {
+  operation() {
+    return 'Результат работы ProductB';
+  }
+}
+
+// Пример использования
+const creatorA = new CreatorA();
+console.log(creatorA.someOperation()); // Вывод: Создан объект класса ProductA
+
+const creatorB = new CreatorB();
+console.log(creatorB.someOperation()); // Вывод: Создан объект класса ProductB
